@@ -1,0 +1,23 @@
+name: Ejecutar Script Python cada 6 minutos
+on:
+  schedule:
+    - cron: "*/6 * * * *"
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v2
+
+      - name: Configurar Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+
+      - name: Ejecutar script Python
+        run: python botFechasDisponibles.py
