@@ -80,8 +80,8 @@ def obtener_horarios_disponibles(fecha):
     }
 
     data = {
-        "data": '[{"name":"action","value":"SELECCIONA-FECHA"},{"name":"planta","value":"110"},{"name":"fecha","value":"%s"}]'
-        % fecha
+        "data": '[{"name":"action","value":"SELECCIONA-FECHA"},{"name":"planta","value":"%s"},{"name":"fecha","value":"%s"}]'
+        % (PLANTA, fecha)
     }
 
     response = requests.post(url, headers=headers, data=data)
