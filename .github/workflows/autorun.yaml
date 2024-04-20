@@ -1,5 +1,6 @@
 name: Ejecutar Script Python cada 6 minutos
 on:
+  workflow_dispatch: # Para ejecutar manualmente
   schedule:
     - cron: "*/6 * * * *"
 
