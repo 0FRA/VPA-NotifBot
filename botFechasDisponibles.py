@@ -9,7 +9,7 @@ from sendMail import enviarAviso
 load_dotenv()
 
 # Constantes
-FECHA_LIMITE = "29/04/2024"  # Fecha límite para buscar turnos disponibles
+FECHA_LIMITE = "26/04/2024"  # Fecha límite para buscar turnos disponibles
 PLANTA = "110"  # ID de la planta de verificación vehicular de la ciudad de La Plata
 
 
@@ -116,6 +116,11 @@ def main():
         print(
             f"Hay saldo_fecha disponible para la fecha {fecha_con_saldo} con una cantidad de {saldo_disponible}."
         )
+        message = f"\n\nSe encontró {saldo_disponible} turno disponible para la fecha {fecha_con_saldo}."
+
+        enviarAviso(os.getenv("EMAIL_RECEIVER"), message, "[VPA] ¡Hay turnos libres!")
+        enviarAviso(os.getenv("EMAIL_RECEIVER_2"), message, "[VPA] ¡Hay turnos libres!")
+
         horarios = obtener_horarios_disponibles(fecha_con_saldo)
         horarios_8_a_9, horarios_despues_15 = encontrar_horario_disponible(horarios)
         if horarios_8_a_9:
